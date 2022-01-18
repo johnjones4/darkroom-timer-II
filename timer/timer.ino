@@ -8,33 +8,37 @@
 Adafruit_MCP23X17 mcp1;
 Adafruit_MCP23X17 mcp2;
 
+bool digitMap[10][N_SEGMENTS] = {
+  {true, true, true, false, true, true, true},
+  {false, false, true, false, false, true, false},
+  {true, false, true, true, true, false, true},
+  {true, false, true, true, false, true, true},
+  {false, true, true, true, false, true, false},
+  {true, true, false, true, false, true, true},
+  {true, true, false, true, true, true, true},
+  {true, false, true, false, false, true, false},
+  {true, true, true, true, true, true, true},
+  {true, true, true, true, false, true, true}
+};
+
 void assignSegments(bool *result, bool settings[N_SEGMENTS]) {
   for (int i = 0; i < N_SEGMENTS; i++) {
     result[i] = settings[i];
   }
 }
 
-
-//  0
-// 1 2
-//  3
-// 4 5
-//  6
-void mapCharToSegments(char c, bool *result) {
-  switch (c) {
-    case 0:
-      bool vals[N_SEGMENTS] = {true, true, true, false, true, true, true};
-      assignSegments(result, vals);
-      break;
+void mapIntToSegments(int v, bool **result) {
+  if (v > 9) {
+    assignSegments(result[0], digitMap[v / 10 % 10]);
+    assignSegments(result[1], digitMap[v % 10]);
+  } else {
+    assignSegments(result[0], digitMap[0]);
+    assignSegments(result[1], digitMap[v]);
   }
 }
 
-void mapIntToSegments(int v, bool **result) {
-  char str[N_DIGITS];
-  sprintf(str, "%d", v);
-  for (int i = 0; i < N_DIGITS; i++) {
-    mapCharToSegments(str[i], result[i]);
-  }
+void updateDisplay(int seconds) {
+  
 }
 
 void setup() {
