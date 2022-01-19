@@ -1,12 +1,19 @@
 #include <Adafruit_MCP23X17.h>
+#include "BluetoothSerial.h"
 
-#define MCP1_ADDR 0x20
-#define MCP2_ADDR 0x21
+#define MCP_ADDR 0x20
 #define N_SEGMENTS 7
-#define N_DIGITS 2
+#define N_DIGITS 4
+#define N_MCPS 2
+#define N_PIN_STARTS 2
+#define BUZZER_PIN 0
+#define START_PIN 1
+#define MODE_PIN 3
+#define N_TIMERSETS 3
 
-Adafruit_MCP23X17 mcp1;
-Adafruit_MCP23X17 mcp2;
+Adafruit_MCP23X17 mcp[N_MCPS];
+
+BluetoothSerial SerialBT;
 
 bool digitMap[10][N_SEGMENTS] = {
   {true, true, true, false, true, true, true},
@@ -21,35 +28,90 @@ bool digitMap[10][N_SEGMENTS] = {
   {true, true, true, true, false, true, true}
 };
 
-void assignSegments(bool *result, bool settings[N_SEGMENTS]) {
+int pinStarts[2] = {0, 8};
+
+bool digitSettings[N_DIGITS][N_SEGMENTS];
+
+int currentTimerStart = 0;
+int currentTimerLength = 0;
+int timerSet[N_TIMERSETS] = {30, 60 * 60, 30};
+int currentTimerSet = 0;
+
+void assignSettings(int index, bool settings[N_SEGMENTS]) {
   for (int i = 0; i < N_SEGMENTS; i++) {
-    result[i] = settings[i];
+    digitSettings[index][i] = settings[i];
   }
 }
 
-void mapIntToSegments(int v, bool **result) {
+void mapIntToDigitSettings(int v, int offset) {
   if (v > 9) {
-    assignSegments(result[0], digitMap[v / 10 % 10]);
-    assignSegments(result[1], digitMap[v % 10]);
+    assignSettings(offset, digitMap[v / 10 % 10]);
+    assignSettings(offset + 1, digitMap[v % 10]);
   } else {
-    assignSegments(result[0], digitMap[0]);
-    assignSegments(result[1], digitMap[v]);
+    assignSettings(offset, digitMap[0]);
+    assignSettings(offset + 1, digitMap[v]);
   }
 }
 
-void updateDisplay(int seconds) {
-  
+void updateLEDs() {
+  int d = 0;
+  for (int i = 0; i < N_MCPS; i++) {
+    for (int j = 0; j < N_PIN_STARTS; j++) {
+      for (int k = 0; k < N_SEGMENTS; k++) {
+        mcp[i].digitalWrite(pinStarts[j] + k, digitSettings[d][k] ? HIGH : LOW);
+      }
+    }
+  }
+}
+
+void updateTimeleft(int timeLeft) {
+  int minutes = timeLeft / 60;
+  int seconds = timeLeft - (minutes * 60);
+  mapIntToDigitSettings(minutes, 0);
+  mapIntToDigitSettings(seconds, 2);
 }
 
 void setup() {
-  // put your setup code here, to run once:
-
-  if (!mcp1.begin_I2C(MCP1_ADDR) || !mcp2.begin_I2C(MCP2_ADDR)) {
-    Serial.println("MCP init error");
-    while (1);
+  Serial.begin(115200);
+  
+  for (int i = 0; i < N_MCPS; i++) {
+    if (!mcp[i].begin_I2C(MCP_ADDR + i)) {
+      Serial.printf("MCP init error: %d\n", i);
+      while (1);
+    }
+    for (int j = 0; j < N_PIN_STARTS; j++) {
+      for (int k = 0; k < N_SEGMENTS; k++) {
+        mcp[i].pinMode(pinStarts[j] + k, OUTPUT);
+      }
+    }
   }
+
+  pinMode(BUZZER_PIN, OUTPUT);
+  pinMode(START_PIN, INPUT_PULLUP);
+  pinMode(MODE_PIN, INPUT_PULLUP);
 }
 
 void loop() {
-  
+  if (digitalRead(MODE_PIN) == LOW) {
+    if (currentTimerStart > 0) {
+      int timeLeft = currentTimerLength - ((millis() / 1000) - currentTimerStart);
+      if (timeLeft >= 0) {
+        updateTimeleft(timeLeft);
+      } else {
+        currentTimerStart = 0;
+        updateTimeleft(0);
+        digitalWrite(BUZZER_PIN, HIGH);
+        delay(1000);
+        digitalWrite(BUZZER_PIN, LOW);
+      }
+    } else if (digitalRead(START_PIN) == HIGH) {
+      currentTimerStart = millis() / 1000;
+      currentTimerLength = timerSet[currentTimerSet % N_TIMERSETS];
+      currentTimerSet++;
+      delay(500);
+    }
+  } else {
+    updateTimeleft(0);
+    //Read bluetooth
+  }
 }

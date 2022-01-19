@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AFBEA6FB2797A3C000F0B1AE /* Darkroom_TimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA6FA2797A3C000F0B1AE /* Darkroom_TimerApp.swift */; };
+		AFBEA6FD2797A3C000F0B1AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA6FC2797A3C000F0B1AE /* ContentView.swift */; };
+		AFBEA6FF2797A3C200F0B1AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFBEA6FE2797A3C200F0B1AE /* Assets.xcassets */; };
+		AFBEA7022797A3C200F0B1AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFBEA7012797A3C200F0B1AE /* Preview Assets.xcassets */; };
+		AFBEA7092797A42800F0B1AE /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = AFBEA7082797A42800F0B1AE /* data.json */; };
+		AFBEA70D2797A6E000F0B1AE /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA70C2797A6E000F0B1AE /* Film.swift */; };
+		AFBEA70F2797A73E00F0B1AE /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA70E2797A73E00F0B1AE /* Developer.swift */; };
+		AFBEA7112797A75B00F0B1AE /* Dilution.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7102797A75B00F0B1AE /* Dilution.swift */; };
+		AFBEA7132797A76F00F0B1AE /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7122797A76F00F0B1AE /* Speed.swift */; };
+		AFBEA7152797A78000F0B1AE /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7142797A78000F0B1AE /* Format.swift */; };
+		AFBEA7172797B52F00F0B1AE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7162797B52F00F0B1AE /* Store.swift */; };
+		AFBEA7192797B8B600F0B1AE /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7182797B8B600F0B1AE /* Favorite.swift */; };
+		AFBEA71D2797BCA200F0B1AE /* FilmTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA71C2797BCA200F0B1AE /* FilmTableView.swift */; };
+		AFBEA71F2797C83F00F0B1AE /* DevelopersTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA71E2797C83F00F0B1AE /* DevelopersTableView.swift */; };
+		AFBEA7212797C9B200F0B1AE /* DilutionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7202797C9B200F0B1AE /* DilutionTableView.swift */; };
+		AFBEA723279843D900F0B1AE /* SpeedTableVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA722279843D900F0B1AE /* SpeedTableVIew.swift */; };
+		AFBEA7252798452400F0B1AE /* FormatTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7242798452400F0B1AE /* FormatTableView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AFBEA6F72797A3C000F0B1AE /* Darkroom Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Darkroom Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFBEA6FA2797A3C000F0B1AE /* Darkroom_TimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Darkroom_TimerApp.swift; sourceTree = "<group>"; };
+		AFBEA6FC2797A3C000F0B1AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AFBEA6FE2797A3C200F0B1AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AFBEA7012797A3C200F0B1AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AFBEA7082797A42800F0B1AE /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		AFBEA70C2797A6E000F0B1AE /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		AFBEA70E2797A73E00F0B1AE /* Developer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Developer.swift; sourceTree = "<group>"; };
+		AFBEA7102797A75B00F0B1AE /* Dilution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dilution.swift; sourceTree = "<group>"; };
+		AFBEA7122797A76F00F0B1AE /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
+		AFBEA7142797A78000F0B1AE /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
+		AFBEA7162797B52F00F0B1AE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		AFBEA7182797B8B600F0B1AE /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		AFBEA71C2797BCA200F0B1AE /* FilmTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableView.swift; sourceTree = "<group>"; };
+		AFBEA71E2797C83F00F0B1AE /* DevelopersTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersTableView.swift; sourceTree = "<group>"; };
+		AFBEA7202797C9B200F0B1AE /* DilutionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DilutionTableView.swift; sourceTree = "<group>"; };
+		AFBEA722279843D900F0B1AE /* SpeedTableVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedTableVIew.swift; sourceTree = "<group>"; };
+		AFBEA7242798452400F0B1AE /* FormatTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatTableView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFBEA6F42797A3C000F0B1AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AFBEA6EE2797A3C000F0B1AE = {
+			isa = PBXGroup;
+			children = (
+				AFBEA6F92797A3C000F0B1AE /* Darkroom Timer */,
+				AFBEA6F82797A3C000F0B1AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFBEA6F82797A3C000F0B1AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFBEA6F72797A3C000F0B1AE /* Darkroom Timer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFBEA6F92797A3C000F0B1AE /* Darkroom Timer */ = {
+			isa = PBXGroup;
+			children = (
+				AFBEA70B2797A68500F0B1AE /* UI */,
+				AFBEA70A2797A67600F0B1AE /* Model */,
+				AFBEA6FA2797A3C000F0B1AE /* Darkroom_TimerApp.swift */,
+				AFBEA6FE2797A3C200F0B1AE /* Assets.xcassets */,
+				AFBEA7002797A3C200F0B1AE /* Preview Content */,
+			);
+			path = "Darkroom Timer";
+			sourceTree = "<group>";
+		};
+		AFBEA7002797A3C200F0B1AE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AFBEA7012797A3C200F0B1AE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AFBEA70A2797A67600F0B1AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AFBEA7082797A42800F0B1AE /* data.json */,
+				AFBEA70C2797A6E000F0B1AE /* Film.swift */,
+				AFBEA70E2797A73E00F0B1AE /* Developer.swift */,
+				AFBEA7102797A75B00F0B1AE /* Dilution.swift */,
+				AFBEA7122797A76F00F0B1AE /* Speed.swift */,
+				AFBEA7142797A78000F0B1AE /* Format.swift */,
+				AFBEA7162797B52F00F0B1AE /* Store.swift */,
+				AFBEA7182797B8B600F0B1AE /* Favorite.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AFBEA70B2797A68500F0B1AE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AFBEA6FC2797A3C000F0B1AE /* ContentView.swift */,
+				AFBEA71C2797BCA200F0B1AE /* FilmTableView.swift */,
+				AFBEA71E2797C83F00F0B1AE /* DevelopersTableView.swift */,
+				AFBEA7202797C9B200F0B1AE /* DilutionTableView.swift */,
+				AFBEA722279843D900F0B1AE /* SpeedTableVIew.swift */,
+				AFBEA7242798452400F0B1AE /* FormatTableView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AFBEA6F62797A3C000F0B1AE /* Darkroom Timer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFBEA7052797A3C200F0B1AE /* Build configuration list for PBXNativeTarget "Darkroom Timer" */;
+			buildPhases = (
+				AFBEA6F32797A3C000F0B1AE /* Sources */,
+				AFBEA6F42797A3C000F0B1AE /* Frameworks */,
+				AFBEA6F52797A3C000F0B1AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Darkroom Timer";
+			productName = "Darkroom Timer";
+			productReference = AFBEA6F72797A3C000F0B1AE /* Darkroom Timer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFBEA6EF2797A3C000F0B1AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					AFBEA6F62797A3C000F0B1AE = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = AFBEA6F22797A3C000F0B1AE /* Build configuration list for PBXProject "Darkroom Timer" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AFBEA6EE2797A3C000F0B1AE;
+			productRefGroup = AFBEA6F82797A3C000F0B1AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFBEA6F62797A3C000F0B1AE /* Darkroom Timer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AFBEA6F52797A3C000F0B1AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFBEA7022797A3C200F0B1AE /* Preview Assets.xcassets in Resources */,
+				AFBEA7092797A42800F0B1AE /* data.json in Resources */,
+				AFBEA6FF2797A3C200F0B1AE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFBEA6F32797A3C000F0B1AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFBEA70F2797A73E00F0B1AE /* Developer.swift in Sources */,
+				AFBEA6FD2797A3C000F0B1AE /* ContentView.swift in Sources */,
+				AFBEA71F2797C83F00F0B1AE /* DevelopersTableView.swift in Sources */,
+				AFBEA7152797A78000F0B1AE /* Format.swift in Sources */,
+				AFBEA7172797B52F00F0B1AE /* Store.swift in Sources */,
+				AFBEA70D2797A6E000F0B1AE /* Film.swift in Sources */,
+				AFBEA723279843D900F0B1AE /* SpeedTableVIew.swift in Sources */,
+				AFBEA71D2797BCA200F0B1AE /* FilmTableView.swift in Sources */,
+				AFBEA7132797A76F00F0B1AE /* Speed.swift in Sources */,
+				AFBEA7192797B8B600F0B1AE /* Favorite.swift in Sources */,
+				AFBEA7252798452400F0B1AE /* FormatTableView.swift in Sources */,
+				AFBEA7212797C9B200F0B1AE /* DilutionTableView.swift in Sources */,
+				AFBEA7112797A75B00F0B1AE /* Dilution.swift in Sources */,
+				AFBEA6FB2797A3C000F0B1AE /* Darkroom_TimerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AFBEA7032797A3C200F0B1AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AFBEA7042797A3C200F0B1AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AFBEA7062797A3C200F0B1AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Darkroom Timer/Preview Content\"";
+				DEVELOPMENT_TEAM = R76229ZJ5F;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.johnjonesfour.Darkroom-Timer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AFBEA7072797A3C200F0B1AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Darkroom Timer/Preview Content\"";
+				DEVELOPMENT_TEAM = R76229ZJ5F;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.johnjonesfour.Darkroom-Timer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFBEA6F22797A3C000F0B1AE /* Build configuration list for PBXProject "Darkroom Timer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFBEA7032797A3C200F0B1AE /* Debug */,
+				AFBEA7042797A3C200F0B1AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFBEA7052797A3C200F0B1AE /* Build configuration list for PBXNativeTarget "Darkroom Timer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFBEA7062797A3C200F0B1AE /* Debug */,
+				AFBEA7072797A3C200F0B1AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFBEA6EF2797A3C000F0B1AE /* Project object */;
+}
