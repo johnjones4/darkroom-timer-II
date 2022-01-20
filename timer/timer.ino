@@ -6,9 +6,9 @@
 #define N_DIGITS 4
 #define N_MCPS 2
 #define N_PIN_STARTS 2
-#define BUZZER_PIN 0
-#define START_PIN 1
-#define MODE_PIN 3
+#define BUZZER_PIN 23
+#define START_PIN 29
+#define MODE_PIN 18
 #define N_TIMERSETS 3
 
 Adafruit_MCP23X17 mcp[N_MCPS];
@@ -73,6 +73,7 @@ void updateTimeleft(int timeLeft) {
 
 void setup() {
   Serial.begin(115200);
+  SerialBT.begin("DarkroomTimer")
   
   for (int i = 0; i < N_MCPS; i++) {
     if (!mcp[i].begin_I2C(MCP_ADDR + i)) {
@@ -109,8 +110,13 @@ void loop() {
       currentTimerLength = timerSet[currentTimerSet % N_TIMERSETS];
       currentTimerSet++;
       delay(500);
+    } else if (currentTimerLength > 0) {
+      updateTimeleft(currentTimerLength);
     }
   } else {
+    currentTimerStart = 0;
+    currentTimerSet = 0;
+    currentTimerLength = 0;
     updateTimeleft(0);
     //Read bluetooth
   }
