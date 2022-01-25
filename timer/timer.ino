@@ -6,9 +6,9 @@
 #define N_DIGITS 4
 #define N_MCPS 2
 #define N_PIN_STARTS 2
-#define BUZZER_PIN 23
-#define START_PIN 29
-#define MODE_PIN 18
+#define BUZZER_PIN 25
+#define START_PIN 26
+#define MODE_PIN 27
 #define N_TIMERSETS 3
 
 Adafruit_MCP23X17 mcp[N_MCPS];
@@ -67,16 +67,17 @@ void updateLEDs() {
 void updateTimeleft(int timeLeft) {
   int minutes = timeLeft / 60;
   int seconds = timeLeft - (minutes * 60);
+  Serial.printf("%d:%d", minutes, seconds);
   mapIntToDigitSettings(minutes, 0);
   mapIntToDigitSettings(seconds, 2);
 }
 
 void setup() {
   Serial.begin(115200);
-  SerialBT.begin("DarkroomTimer")
+  SerialBT.begin("DarkroomTimer");
   
   for (int i = 0; i < N_MCPS; i++) {
-    if (!mcp[i].begin_I2C(MCP_ADDR + i)) {
+    if (!mcp[i].begin_I2C()) {
       Serial.printf("MCP init error: %d\n", i);
       while (1);
     }
@@ -90,34 +91,37 @@ void setup() {
   pinMode(BUZZER_PIN, OUTPUT);
   pinMode(START_PIN, INPUT_PULLUP);
   pinMode(MODE_PIN, INPUT_PULLUP);
+
+  updateTimeleft(60 * 59);
 }
 
 void loop() {
-  if (digitalRead(MODE_PIN) == LOW) {
-    if (currentTimerStart > 0) {
-      int timeLeft = currentTimerLength - ((millis() / 1000) - currentTimerStart);
-      if (timeLeft >= 0) {
-        updateTimeleft(timeLeft);
-      } else {
-        currentTimerStart = 0;
-        updateTimeleft(0);
-        digitalWrite(BUZZER_PIN, HIGH);
-        delay(1000);
-        digitalWrite(BUZZER_PIN, LOW);
-      }
-    } else if (digitalRead(START_PIN) == HIGH) {
-      currentTimerStart = millis() / 1000;
-      currentTimerLength = timerSet[currentTimerSet % N_TIMERSETS];
-      currentTimerSet++;
-      delay(500);
-    } else if (currentTimerLength > 0) {
-      updateTimeleft(currentTimerLength);
-    }
-  } else {
-    currentTimerStart = 0;
-    currentTimerSet = 0;
-    currentTimerLength = 0;
-    updateTimeleft(0);
-    //Read bluetooth
-  }
+//  if (digitalRead(MODE_PIN) == LOW) {
+//    if (currentTimerStart > 0) {
+//      int timeLeft = currentTimerLength - ((millis() / 1000) - currentTimerStart);
+//      if (timeLeft >= 0) {
+//        updateTimeleft(timeLeft);
+//      } else {
+//        currentTimerStart = 0;
+//        updateTimeleft(0);
+//        digitalWrite(BUZZER_PIN, HIGH);
+//        delay(1000);
+//        digitalWrite(BUZZER_PIN, LOW);
+//      }
+//    } else if (digitalRead(START_PIN) == HIGH) {
+//      currentTimerStart = millis() / 1000;
+//      currentTimerLength = timerSet[currentTimerSet % N_TIMERSETS];
+//      currentTimerSet++;
+//      updateTimeleft(currentTimerLength);
+//      delay(500);
+//    } else if (currentTimerLength > 0) {
+//      updateTimeleft(currentTimerLength);
+//    }
+//  } else {
+////    currentTimerStart = 0;
+////    currentTimerSet = 0;
+////    currentTimerLength = 0;
+////    updateTimeleft(0);
+//    //Read bluetooth
+//  }
 }
