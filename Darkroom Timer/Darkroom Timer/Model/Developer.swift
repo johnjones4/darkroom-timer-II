@@ -14,9 +14,4 @@ struct Developer: Decodable, Encodable, Identifiable {
     
     let name: String
     let dilutions: [Dilution]
-    
-    init(name: String, dilutions: [Dilution]) {
-        self.name = name
-        self.dilutions = dilutions
-    }
 }

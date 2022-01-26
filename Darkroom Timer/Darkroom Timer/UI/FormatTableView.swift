@@ -15,7 +15,7 @@ struct FormatTableView: View {
     
     var body: some View {
         List(speed.formats) { format in
-            NavigationLink(destination: Text(format.format)) {
+            NavigationLink(destination: TemperaturesTableView(film: film, developer: developer, dilution:dilution, speed: speed, format: format)) {
                 VStack(alignment: .leading) {
                     Text(format.format)
                 }
@@ -32,7 +32,7 @@ struct FormatTableView_Previews: PreviewProvider {
             dilution: Dilution(ratio: "1+4", speeds: []
             ),
             speed: Speed(value: "400", formats: [
-                Format(format: "125", devTime: 0)
+                Format(format: "125", temperatures: [])
             ])
         )
     }

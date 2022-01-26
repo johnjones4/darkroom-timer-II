@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct FilmTableView: View {
-    var films: [Film]
-    
     var body: some View {
-        List(films) { film in
+        List(Store.main.films) { film in
             NavigationLink(destination: DevelopersTableView(film: film)) {
                 VStack(alignment: .leading) {
                     Text(film.name)
@@ -23,9 +21,6 @@ struct FilmTableView: View {
 
 struct FilmTableView_Previews: PreviewProvider {
     static var previews: some View {
-        FilmTableView(films: [
-            Film(name: "Tmax", developers: []),
-            Film(name: "Tri-X", developers: [])
-        ])
+        FilmTableView()
     }
 }

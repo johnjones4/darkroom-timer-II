@@ -14,9 +14,4 @@ struct Speed: Decodable, Encodable, Identifiable {
     
     let value: String
     let formats: [Format]
-    
-    init(value: String, formats: [Format]) {
-        self.value = value
-        self.formats = formats
-    }
 }

@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF51A6D527A04D7E005941D7 /* RecentsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51A6D427A04D7E005941D7 /* RecentsTableView.swift */; };
+		AF51A6DD27A08FFD005941D7 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51A6D727A062AB005941D7 /* TimerController.swift */; };
+		AF51A6DE27A09029005941D7 /* ControllerLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51A6D927A07335005941D7 /* ControllerLog.swift */; };
+		AF51A6DF27A09031005941D7 /* DeviceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51A6DB27A077A9005941D7 /* DeviceLog.swift */; };
+		AF51A6E127A0DA5A005941D7 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51A6E027A0DA5A005941D7 /* Temperature.swift */; };
+		AF60668C2798E39F00AD5B4C /* TemperaturesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60668B2798E39F00AD5B4C /* TemperaturesTableView.swift */; };
+		AF6066902798EB8C00AD5B4C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60668F2798EB8C00AD5B4C /* DetailView.swift */; };
+		AF6066922799135E00AD5B4C /* RecentSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6066912799135E00AD5B4C /* RecentSelection.swift */; };
 		AFBEA6FB2797A3C000F0B1AE /* Darkroom_TimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA6FA2797A3C000F0B1AE /* Darkroom_TimerApp.swift */; };
-		AFBEA6FD2797A3C000F0B1AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA6FC2797A3C000F0B1AE /* ContentView.swift */; };
+		AFBEA6FD2797A3C000F0B1AE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA6FC2797A3C000F0B1AE /* MainView.swift */; };
 		AFBEA6FF2797A3C200F0B1AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFBEA6FE2797A3C200F0B1AE /* Assets.xcassets */; };
 		AFBEA7022797A3C200F0B1AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFBEA7012797A3C200F0B1AE /* Preview Assets.xcassets */; };
 		AFBEA7092797A42800F0B1AE /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = AFBEA7082797A42800F0B1AE /* data.json */; };
@@ -18,7 +26,7 @@
 		AFBEA7132797A76F00F0B1AE /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7122797A76F00F0B1AE /* Speed.swift */; };
 		AFBEA7152797A78000F0B1AE /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7142797A78000F0B1AE /* Format.swift */; };
 		AFBEA7172797B52F00F0B1AE /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7162797B52F00F0B1AE /* Store.swift */; };
-		AFBEA7192797B8B600F0B1AE /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7182797B8B600F0B1AE /* Favorite.swift */; };
+		AFBEA7192797B8B600F0B1AE /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7182797B8B600F0B1AE /* Selection.swift */; };
 		AFBEA71D2797BCA200F0B1AE /* FilmTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA71C2797BCA200F0B1AE /* FilmTableView.swift */; };
 		AFBEA71F2797C83F00F0B1AE /* DevelopersTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA71E2797C83F00F0B1AE /* DevelopersTableView.swift */; };
 		AFBEA7212797C9B200F0B1AE /* DilutionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA7202797C9B200F0B1AE /* DilutionTableView.swift */; };
@@ -27,9 +35,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF51A6D427A04D7E005941D7 /* RecentsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsTableView.swift; sourceTree = "<group>"; };
+		AF51A6D727A062AB005941D7 /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
+		AF51A6D927A07335005941D7 /* ControllerLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerLog.swift; sourceTree = "<group>"; };
+		AF51A6DB27A077A9005941D7 /* DeviceLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLog.swift; sourceTree = "<group>"; };
+		AF51A6E027A0DA5A005941D7 /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
+		AF60668B2798E39F00AD5B4C /* TemperaturesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperaturesTableView.swift; sourceTree = "<group>"; };
+		AF60668F2798EB8C00AD5B4C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		AF6066912799135E00AD5B4C /* RecentSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSelection.swift; sourceTree = "<group>"; };
 		AFBEA6F72797A3C000F0B1AE /* Darkroom Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Darkroom Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFBEA6FA2797A3C000F0B1AE /* Darkroom_TimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Darkroom_TimerApp.swift; sourceTree = "<group>"; };
-		AFBEA6FC2797A3C000F0B1AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AFBEA6FC2797A3C000F0B1AE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AFBEA6FE2797A3C200F0B1AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFBEA7012797A3C200F0B1AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AFBEA7082797A42800F0B1AE /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
@@ -39,7 +55,7 @@
 		AFBEA7122797A76F00F0B1AE /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		AFBEA7142797A78000F0B1AE /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		AFBEA7162797B52F00F0B1AE /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		AFBEA7182797B8B600F0B1AE /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		AFBEA7182797B8B600F0B1AE /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		AFBEA71C2797BCA200F0B1AE /* FilmTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableView.swift; sourceTree = "<group>"; };
 		AFBEA71E2797C83F00F0B1AE /* DevelopersTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersTableView.swift; sourceTree = "<group>"; };
 		AFBEA7202797C9B200F0B1AE /* DilutionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DilutionTableView.swift; sourceTree = "<group>"; };
@@ -58,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF51A6D627A05392005941D7 /* Hardware */ = {
+			isa = PBXGroup;
+			children = (
+				AF51A6D727A062AB005941D7 /* TimerController.swift */,
+				AF51A6D927A07335005941D7 /* ControllerLog.swift */,
+			);
+			path = Hardware;
+			sourceTree = "<group>";
+		};
 		AFBEA6EE2797A3C000F0B1AE = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +102,7 @@
 		AFBEA6F92797A3C000F0B1AE /* Darkroom Timer */ = {
 			isa = PBXGroup;
 			children = (
+				AF51A6D627A05392005941D7 /* Hardware */,
 				AFBEA70B2797A68500F0B1AE /* UI */,
 				AFBEA70A2797A67600F0B1AE /* Model */,
 				AFBEA6FA2797A3C000F0B1AE /* Darkroom_TimerApp.swift */,
@@ -98,13 +124,15 @@
 			isa = PBXGroup;
 			children = (
 				AFBEA7082797A42800F0B1AE /* data.json */,
+				AFBEA7162797B52F00F0B1AE /* Store.swift */,
 				AFBEA70C2797A6E000F0B1AE /* Film.swift */,
 				AFBEA70E2797A73E00F0B1AE /* Developer.swift */,
 				AFBEA7102797A75B00F0B1AE /* Dilution.swift */,
 				AFBEA7122797A76F00F0B1AE /* Speed.swift */,
 				AFBEA7142797A78000F0B1AE /* Format.swift */,
-				AFBEA7162797B52F00F0B1AE /* Store.swift */,
-				AFBEA7182797B8B600F0B1AE /* Favorite.swift */,
+				AF51A6E027A0DA5A005941D7 /* Temperature.swift */,
+				AFBEA7182797B8B600F0B1AE /* Selection.swift */,
+				AF6066912799135E00AD5B4C /* RecentSelection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,12 +140,16 @@
 		AFBEA70B2797A68500F0B1AE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				AFBEA6FC2797A3C000F0B1AE /* ContentView.swift */,
+				AFBEA6FC2797A3C000F0B1AE /* MainView.swift */,
 				AFBEA71C2797BCA200F0B1AE /* FilmTableView.swift */,
 				AFBEA71E2797C83F00F0B1AE /* DevelopersTableView.swift */,
 				AFBEA7202797C9B200F0B1AE /* DilutionTableView.swift */,
 				AFBEA722279843D900F0B1AE /* SpeedTableVIew.swift */,
 				AFBEA7242798452400F0B1AE /* FormatTableView.swift */,
+				AF60668B2798E39F00AD5B4C /* TemperaturesTableView.swift */,
+				AF60668F2798EB8C00AD5B4C /* DetailView.swift */,
+				AF51A6D427A04D7E005941D7 /* RecentsTableView.swift */,
+				AF51A6DB27A077A9005941D7 /* DeviceLog.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -194,7 +226,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFBEA70F2797A73E00F0B1AE /* Developer.swift in Sources */,
-				AFBEA6FD2797A3C000F0B1AE /* ContentView.swift in Sources */,
+				AF51A6DE27A09029005941D7 /* ControllerLog.swift in Sources */,
+				AF6066922799135E00AD5B4C /* RecentSelection.swift in Sources */,
+				AFBEA6FD2797A3C000F0B1AE /* MainView.swift in Sources */,
+				AF6066902798EB8C00AD5B4C /* DetailView.swift in Sources */,
 				AFBEA71F2797C83F00F0B1AE /* DevelopersTableView.swift in Sources */,
 				AFBEA7152797A78000F0B1AE /* Format.swift in Sources */,
 				AFBEA7172797B52F00F0B1AE /* Store.swift in Sources */,
@@ -202,10 +237,15 @@
 				AFBEA723279843D900F0B1AE /* SpeedTableVIew.swift in Sources */,
 				AFBEA71D2797BCA200F0B1AE /* FilmTableView.swift in Sources */,
 				AFBEA7132797A76F00F0B1AE /* Speed.swift in Sources */,
-				AFBEA7192797B8B600F0B1AE /* Favorite.swift in Sources */,
+				AFBEA7192797B8B600F0B1AE /* Selection.swift in Sources */,
+				AF51A6DD27A08FFD005941D7 /* TimerController.swift in Sources */,
 				AFBEA7252798452400F0B1AE /* FormatTableView.swift in Sources */,
+				AF51A6E127A0DA5A005941D7 /* Temperature.swift in Sources */,
 				AFBEA7212797C9B200F0B1AE /* DilutionTableView.swift in Sources */,
 				AFBEA7112797A75B00F0B1AE /* Dilution.swift in Sources */,
+				AF60668C2798E39F00AD5B4C /* TemperaturesTableView.swift in Sources */,
+				AF51A6DF27A09031005941D7 /* DeviceLog.swift in Sources */,
+				AF51A6D527A04D7E005941D7 /* RecentsTableView.swift in Sources */,
 				AFBEA6FB2797A3C000F0B1AE /* Darkroom_TimerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,7 +304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -319,7 +359,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -340,6 +380,7 @@
 				DEVELOPMENT_TEAM = R76229ZJ5F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Bluetooth is used to control the clock.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -369,6 +410,7 @@
 				DEVELOPMENT_TEAM = R76229ZJ5F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Bluetooth is used to control the clock.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -7,22 +7,22 @@
 
 import Foundation
 
-class Store {
+class Store: ObservableObject {
     var films = [Film]()
-    var favorites = [Favorite]()
+    @Published var recents = [RecentSelection]()
     
-    static func load() -> Store {
-        let s = Store()
+    static let main = Store()
+    
+    func load() {
         do {
-            try s.loadFilms()
-            try s.loadFavorites()
+            try self.loadFilms()
+            try self.loadRecents()
         } catch {
             print(error)
         }
-        return s
     }
     
-    private var favoritesURL: URL {
+    private var recentsURL: URL {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         return documentDirectory.appendingPathComponent("favorites.json")
     }
@@ -34,15 +34,25 @@ class Store {
         self.films = try decoder.decode([Film].self, from: data)
     }
     
-    func loadFavorites() throws {
-        guard let data = try? Data(contentsOf: self.favoritesURL) else { return }
+    func loadRecents() throws {
+        guard let data = try? Data(contentsOf: self.recentsURL) else { return }
         let decoder = JSONDecoder()
-        self.favorites = try! decoder.decode([Favorite].self, from: data)
+        self.recents = try decoder.decode([RecentSelection].self, from: data)
     }
     
-    func saveFavorites() {
+    func saveRecents() throws {
         let encoder = JSONEncoder()
-        guard let data = try? encoder.encode(self.favorites) else { return }
-        try? data.write(to: self.favoritesURL)
+        guard let data = try? encoder.encode(self.recents) else { return }
+        try data.write(to: self.recentsURL)
+    }
+    
+    func addRecent(selection: Selection) throws {
+        recents.append(RecentSelection(timestamp: Date(), selection: selection))
+        if recents.count > 20 {
+            recents = recents.dropFirst().map({ r in
+                return r
+            })
+        }
+        try self.saveRecents()
     }
 }

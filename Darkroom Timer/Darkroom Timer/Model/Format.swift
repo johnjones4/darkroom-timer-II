@@ -13,10 +13,5 @@ struct Format: Decodable, Encodable, Identifiable {
     }
     
     let format: String
-    let devTime: Int
-    
-    init(format: String, devTime: Int) {
-        self.format = format
-        self.devTime = devTime
-    }
+    let temperatures: [Temperature]
 }

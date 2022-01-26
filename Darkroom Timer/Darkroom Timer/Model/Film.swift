@@ -14,9 +14,4 @@ struct Film: Decodable, Encodable, Identifiable {
     
     let name: String
     let developers: [Developer]
-    
-    init(name: String, developers: [Developer]) {
-        self.name = name
-        self.developers = developers
-    }
 }

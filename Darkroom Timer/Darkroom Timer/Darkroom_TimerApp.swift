@@ -9,11 +9,14 @@ import SwiftUI
 
 @main
 struct Darkroom_TimerApp: App {
-    var store = Store.load()
+    init() {
+        Store.main.load()
+        TimerController.main.start()
+    }
     
     var body: some Scene {
         WindowGroup {
-            ContentView(store: store)
+            MainView()
         }
     }
 }

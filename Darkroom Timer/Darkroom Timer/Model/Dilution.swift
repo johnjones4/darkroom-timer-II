@@ -14,9 +14,4 @@ struct Dilution: Decodable, Encodable, Identifiable {
     
     let ratio: String
     let speeds: [Speed]
-    
-    init(ratio: String, speeds: [Speed]) {
-        self.ratio = ratio
-        self.speeds = speeds
-    }
 }
