@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF24F47D27A223CC0048FEE4 /* CustomTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF24F47C27A223CC0048FEE4 /* CustomTimerView.swift */; };
+		AF24F47F27A2248C0048FEE4 /* CustomTimerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF24F47E27A2248C0048FEE4 /* CustomTimerSet.swift */; };
+		AF24F48127A235C40048FEE4 /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF24F48027A235C40048FEE4 /* TimerPickerView.swift */; };
 		AF51A6D527A04D7E005941D7 /* RecentsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51A6D427A04D7E005941D7 /* RecentsTableView.swift */; };
 		AF51A6DD27A08FFD005941D7 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51A6D727A062AB005941D7 /* TimerController.swift */; };
 		AF51A6DE27A09029005941D7 /* ControllerLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51A6D927A07335005941D7 /* ControllerLog.swift */; };
@@ -14,7 +17,7 @@
 		AF51A6E127A0DA5A005941D7 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51A6E027A0DA5A005941D7 /* Temperature.swift */; };
 		AF60668C2798E39F00AD5B4C /* TemperaturesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60668B2798E39F00AD5B4C /* TemperaturesTableView.swift */; };
 		AF6066902798EB8C00AD5B4C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60668F2798EB8C00AD5B4C /* DetailView.swift */; };
-		AF6066922799135E00AD5B4C /* RecentSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6066912799135E00AD5B4C /* RecentSelection.swift */; };
+		AF6066922799135E00AD5B4C /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6066912799135E00AD5B4C /* Recent.swift */; };
 		AFBEA6FB2797A3C000F0B1AE /* Darkroom_TimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA6FA2797A3C000F0B1AE /* Darkroom_TimerApp.swift */; };
 		AFBEA6FD2797A3C000F0B1AE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBEA6FC2797A3C000F0B1AE /* MainView.swift */; };
 		AFBEA6FF2797A3C200F0B1AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFBEA6FE2797A3C200F0B1AE /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF24F47C27A223CC0048FEE4 /* CustomTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimerView.swift; sourceTree = "<group>"; };
+		AF24F47E27A2248C0048FEE4 /* CustomTimerSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimerSet.swift; sourceTree = "<group>"; };
+		AF24F48027A235C40048FEE4 /* TimerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerView.swift; sourceTree = "<group>"; };
 		AF51A6D427A04D7E005941D7 /* RecentsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsTableView.swift; sourceTree = "<group>"; };
 		AF51A6D727A062AB005941D7 /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
 		AF51A6D927A07335005941D7 /* ControllerLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerLog.swift; sourceTree = "<group>"; };
@@ -42,7 +48,7 @@
 		AF51A6E027A0DA5A005941D7 /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		AF60668B2798E39F00AD5B4C /* TemperaturesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperaturesTableView.swift; sourceTree = "<group>"; };
 		AF60668F2798EB8C00AD5B4C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		AF6066912799135E00AD5B4C /* RecentSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSelection.swift; sourceTree = "<group>"; };
+		AF6066912799135E00AD5B4C /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		AFBEA6F72797A3C000F0B1AE /* Darkroom Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Darkroom Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFBEA6FA2797A3C000F0B1AE /* Darkroom_TimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Darkroom_TimerApp.swift; sourceTree = "<group>"; };
 		AFBEA6FC2797A3C000F0B1AE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -132,7 +138,8 @@
 				AFBEA7142797A78000F0B1AE /* Format.swift */,
 				AF51A6E027A0DA5A005941D7 /* Temperature.swift */,
 				AFBEA7182797B8B600F0B1AE /* Selection.swift */,
-				AF6066912799135E00AD5B4C /* RecentSelection.swift */,
+				AF6066912799135E00AD5B4C /* Recent.swift */,
+				AF24F47E27A2248C0048FEE4 /* CustomTimerSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -150,6 +157,8 @@
 				AF60668F2798EB8C00AD5B4C /* DetailView.swift */,
 				AF51A6D427A04D7E005941D7 /* RecentsTableView.swift */,
 				AF51A6DB27A077A9005941D7 /* DeviceLog.swift */,
+				AF24F47C27A223CC0048FEE4 /* CustomTimerView.swift */,
+				AF24F48027A235C40048FEE4 /* TimerPickerView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -225,9 +234,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF24F48127A235C40048FEE4 /* TimerPickerView.swift in Sources */,
+				AF24F47F27A2248C0048FEE4 /* CustomTimerSet.swift in Sources */,
 				AFBEA70F2797A73E00F0B1AE /* Developer.swift in Sources */,
 				AF51A6DE27A09029005941D7 /* ControllerLog.swift in Sources */,
-				AF6066922799135E00AD5B4C /* RecentSelection.swift in Sources */,
+				AF6066922799135E00AD5B4C /* Recent.swift in Sources */,
 				AFBEA6FD2797A3C000F0B1AE /* MainView.swift in Sources */,
 				AF6066902798EB8C00AD5B4C /* DetailView.swift in Sources */,
 				AFBEA71F2797C83F00F0B1AE /* DevelopersTableView.swift in Sources */,
@@ -240,6 +251,7 @@
 				AFBEA7192797B8B600F0B1AE /* Selection.swift in Sources */,
 				AF51A6DD27A08FFD005941D7 /* TimerController.swift in Sources */,
 				AFBEA7252798452400F0B1AE /* FormatTableView.swift in Sources */,
+				AF24F47D27A223CC0048FEE4 /* CustomTimerView.swift in Sources */,
 				AF51A6E127A0DA5A005941D7 /* Temperature.swift in Sources */,
 				AFBEA7212797C9B200F0B1AE /* DilutionTableView.swift in Sources */,
 				AFBEA7112797A75B00F0B1AE /* Dilution.swift in Sources */,

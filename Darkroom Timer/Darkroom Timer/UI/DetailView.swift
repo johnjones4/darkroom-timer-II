@@ -15,6 +15,8 @@ struct SelectionDetailElement: Identifiable {
     let value: String
 }
 
+let DefaultTimes : [UInt16] = [60, 60 * 5]
+
 struct DetailView: View {
     var selection: Selection
     var rows: [SelectionDetailElement] {
@@ -42,11 +44,11 @@ struct DetailView: View {
                     }
                 }
             }
-            Section(header: Text("")) {
+            Section() {
                 Button {
                     do {
-                        TimerController.main.send(seconds: selection.temperature.time)
-                        try Store.main.addRecent(selection: selection)
+                        TimerController.main.send(times: selection.temperature.times + DefaultTimes)
+                        try Store.main.addRecentSelection(selection: selection)
                     } catch {
                         print(error)
                     }
@@ -69,7 +71,7 @@ struct DetailView_Previews: PreviewProvider {
             ),
             speed: Speed(value: "400", formats: []),
             format: Format(format: "125", temperatures: []),
-            temperature: Temperature(temperature: 20, time: 600)
+            temperature: Temperature(temperature: 20, times: [600, 300])
         ))
     }
 }

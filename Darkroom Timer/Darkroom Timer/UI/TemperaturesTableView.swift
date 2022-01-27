@@ -34,8 +34,8 @@ struct TimesTableView_Previews: PreviewProvider {
             ),
             speed: Speed(value: "400", formats: []),
             format: Format(format: "125", temperatures: [
-                Temperature(temperature: 30, time: 10),
-                Temperature(temperature: 40, time: 20),
+                Temperature(temperature: 30, times: [UInt16(10)]),
+                Temperature(temperature: 40, times: [UInt16(20)]),
             ])
         )
     }

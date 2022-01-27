@@ -13,13 +13,19 @@ struct MainView: View {
             NavigationView {
                 FilmTableView()
             }.tabItem {
-                Text("All Films")
+                Text("Films")
                 Image(systemName: "film")
+            }
+            NavigationView {
+                CustomTimerView()
+            }.tabItem {
+                Text("Custom")
+                Image(systemName: "timer")
             }
             NavigationView {
                 RecentsTableView()
             }.tabItem {
-                Text("Recents")
+                Text("Recent")
                 Image(systemName: "clock")
             }
             NavigationView {

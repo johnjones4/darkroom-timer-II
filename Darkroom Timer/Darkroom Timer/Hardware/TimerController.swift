@@ -36,12 +36,12 @@ class TimerController: NSObject, ObservableObject {
         manager.scanForPeripherals(withServices: [ServiceUUID], options: nil)
     }
 
-    func send(seconds: UInt16) {
-        let times : [UInt16] = [seconds, 60, 5 * 60]
-
+    func send(times: [UInt16]) {
         var message = Data()
 
         message.append(MessageStart)
+        
+        message.append(UInt8(times.count))
 
         times.forEach { time in
             let parts : [UInt8] = [
