@@ -9,19 +9,19 @@
 
 #define MESSAGE_START 0x02
 #define MESSAGE_END 0x03
-#define EXPECTED_PARTS 3
+#define MAX_LENGTH 256
 
 #define BUZZER_PIN 25
 #define START_PIN 26
-#define N_TIMERSETS 3
 
 BLEServer *pServer;
 BLEService *pService;
 BLECharacteristic *pCharacteristic;
 
+uint8_t currentTimersN = 3;
 uint16_t currentTimerStart = 0;
 uint16_t currentTimerLength = 0;
-uint16_t timerSet[N_TIMERSETS] = {60 * 2, 60, 5 * 60};
+uint16_t timerSet[MAX_LENGTH] = {60 * 2, 60, 5 * 60};
 int currentTimerSet = 0;
 
 std::string lastBLEValue;
@@ -34,22 +34,25 @@ void updateTimeleft(uint16_t timeLeft) {
 
 bool readBLE() {
   std::string value = pCharacteristic->getValue();
-  if (value.compare(lastBLEValue) != 0) {
-    lastBLEValue = value;
-    const char* bytes = value.c_str();
-    int l = value.length();
-    if (l == 8
-      && bytes[0] == MESSAGE_START
-      && bytes[l - 1] == MESSAGE_END) {
-        int b = 0;
-        for (int i = 0; i < EXPECTED_PARTS; i++) {
-           timerSet[i] = uint16_t(bytes[(i * 2) + 1]) | (uint16_t(bytes[(i * 2) + 2]) << 8);
-           Serial.printf("Seconds: %d\n", timerSet[i]);
-        }
-        return true;
-      }
+  if (value.compare(lastBLEValue) == 0) {
+    return false;
   }
-  return false;
+  lastBLEValue = value;
+  const char* bytes = value.c_str();
+  int l = value.length();
+  if (bytes[0] != MESSAGE_START) {
+    return false;
+  }
+  int length = uint8_t(bytes[1]);
+  if (length >= MAX_LENGTH || length == 0 || bytes[1 + (length * 2)] != MESSAGE_END) {
+    return false;
+  }
+  for (int i = 0; i < MAX_LENGTH; i++) {
+     timerSet[i] = uint16_t(bytes[(i * 2) + 2]) | (uint16_t(bytes[(i * 2) + 3]) << 8);
+     Serial.printf("Seconds: %d\n", timerSet[i]);
+  }
+  currentTimersN = length;
+  return true;
 }
 
 void setup() {
@@ -103,7 +106,7 @@ void loop() {
     }
   } else if (digitalRead(START_PIN) == LOW) {
     currentTimerStart = millis() / 1000;
-    currentTimerLength = timerSet[currentTimerSet % N_TIMERSETS];
+    currentTimerLength = timerSet[currentTimerSet % currentTimersN];
     currentTimerSet++;
     updateTimeleft(currentTimerLength);
     delay(500);
