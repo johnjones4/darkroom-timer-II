@@ -47,7 +47,7 @@ bool readBLE() {
   if (length >= MAX_LENGTH || length == 0 || bytes[2 + (length * 2)] != MESSAGE_END) {
     return false;
   }
-  for (int i = 0; i < MAX_LENGTH; i++) {
+  for (int i = 0; i < length; i++) {
      timerSet[i] = uint16_t(bytes[(i * 2) + 2]) | (uint16_t(bytes[(i * 2) + 3]) << 8);
      Serial.printf("Seconds: %d\n", timerSet[i]);
   }
