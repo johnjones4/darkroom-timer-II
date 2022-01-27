@@ -59,7 +59,7 @@ void setup() {
   Serial.begin(115200);
 
   pinMode(BUZZER_PIN, OUTPUT);
-  pinMode(START_PIN, INPUT_PULLUP);
+  pinMode(START_PIN, INPUT);
 
   BLEDevice::init(PERIPHERAL_NAME);
   pServer = BLEDevice::createServer();
@@ -87,7 +87,6 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(digitalRead(START_PIN) == LOW);
   if (readBLE()) {
     currentTimerStart = 0;
     currentTimerSet = 0;
@@ -104,13 +103,14 @@ void loop() {
       delay(1000);
       digitalWrite(BUZZER_PIN, LOW);
     }
-  } else if (digitalRead(START_PIN) == LOW) {
+  } else if (currentTimerLength > 0) {
+    updateTimeleft(currentTimerLength);
+  }
+  if (digitalRead(START_PIN) == HIGH) {
     currentTimerStart = millis() / 1000;
     currentTimerLength = timerSet[currentTimerSet % currentTimersN];
     currentTimerSet++;
     updateTimeleft(currentTimerLength);
     delay(500);
-  } else if (currentTimerLength > 0) {
-    updateTimeleft(currentTimerLength);
   }
 }
