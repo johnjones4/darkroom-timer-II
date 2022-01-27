@@ -44,7 +44,7 @@ bool readBLE() {
     return false;
   }
   int length = uint8_t(bytes[1]);
-  if (length >= MAX_LENGTH || length == 0 || bytes[1 + (length * 2)] != MESSAGE_END) {
+  if (length >= MAX_LENGTH || length == 0 || bytes[2 + (length * 2)] != MESSAGE_END) {
     return false;
   }
   for (int i = 0; i < MAX_LENGTH; i++) {
