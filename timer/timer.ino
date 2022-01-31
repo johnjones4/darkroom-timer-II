@@ -2,6 +2,8 @@
 #include <BLEUtils.h>
 #include <BLEScan.h>
 #include <BLEAdvertisedDevice.h>
+#include <Adafruit_GFX.h>
+#include "Adafruit_LEDBackpack.h"
 
 #define PERIPHERAL_NAME     "Darkroom Timer"
 #define SERVICE_UUID        "9759fea6-c846-4719-9d5c-c959efd61aeb"
@@ -13,15 +15,20 @@
 
 #define BUZZER_PIN 25
 #define START_PIN 26
+#define BRIGHTNESS_PIN 4
+
+#define BRIGHTNESS_MAX 15
 
 BLEServer *pServer;
 BLEService *pService;
 BLECharacteristic *pCharacteristic;
 
+Adafruit_7segment matrix = Adafruit_7segment();
+
 uint8_t currentTimersN = 3;
 uint16_t currentTimerStart = 0;
-uint16_t currentTimerLength = 0;
 uint16_t timerSet[MAX_LENGTH] = {60 * 2, 60, 5 * 60};
+uint16_t currentTimerLength = timerSet[0];
 int currentTimerSet = 0;
 
 std::string lastBLEValue;
@@ -29,7 +36,14 @@ std::string lastBLEValue;
 void updateTimeleft(uint16_t timeLeft) {
   uint16_t minutes = timeLeft / 60;
   uint16_t seconds = timeLeft - (minutes * 60);
-  Serial.printf("%d:%d\n", minutes, seconds);
+
+  int displayTime = (minutes * 100) + seconds;
+
+  matrix.print(displayTime, DEC);
+
+  matrix.drawColon(true);
+  
+  matrix.writeDisplay();
 }
 
 bool readBLE() {
@@ -58,8 +72,17 @@ bool readBLE() {
 void setup() {
   Serial.begin(115200);
 
+  if (!matrix.begin(0x70)) {
+    Serial.println("Display not ready");
+    while (1) {}
+  }
+
+  matrix.print("0000");
+  matrix.writeDisplay();
+
   pinMode(BUZZER_PIN, OUTPUT);
   pinMode(START_PIN, INPUT);
+  pinMode(BRIGHTNESS_PIN, INPUT);
 
   BLEDevice::init(PERIPHERAL_NAME);
   pServer = BLEDevice::createServer();
@@ -79,14 +102,16 @@ void setup() {
 
   Serial.println("BLE ready.");
 
-  updateTimeleft(60 * 59);
-
   digitalWrite(BUZZER_PIN, HIGH);
   delay(1000);
   digitalWrite(BUZZER_PIN, LOW);
 }
 
 void loop() {
+  int analogValue = analogRead(BRIGHTNESS_PIN);
+  int brightnessValue = map(analogValue, 0, 3670, BRIGHTNESS_MAX, 0);
+  matrix.setBrightness(brightnessValue);
+
   if (readBLE()) {
     currentTimerStart = 0;
     currentTimerSet = 0;
