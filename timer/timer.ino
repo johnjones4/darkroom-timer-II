@@ -27,7 +27,7 @@ Adafruit_7segment matrix = Adafruit_7segment();
 
 uint8_t currentTimersN = 3;
 uint16_t currentTimerStart = 0;
-uint16_t timerSet[MAX_LENGTH] = {60 * 2, 60, 5 * 60};
+uint16_t timerSet[MAX_LENGTH] = {60 * 2, 30, 5 * 60};
 uint16_t currentTimerLength = timerSet[0];
 int currentTimerSet = 0;
 
@@ -102,6 +102,8 @@ void setup() {
 
   Serial.println("BLE ready.");
 
+  updateTimeleft(timerSet[0]);
+
   digitalWrite(BUZZER_PIN, HIGH);
   delay(1000);
   digitalWrite(BUZZER_PIN, LOW);
@@ -123,13 +125,13 @@ void loop() {
       updateTimeleft(timeLeft);
     } else {
       currentTimerStart = 0;
+      currentTimerLength = 0;
       updateTimeleft(0);
       digitalWrite(BUZZER_PIN, HIGH);
       delay(1000);
       digitalWrite(BUZZER_PIN, LOW);
+      updateTimeleft(timerSet[currentTimerSet % currentTimersN]);
     }
-  } else if (currentTimerLength > 0) {
-    updateTimeleft(currentTimerLength);
   }
   if (digitalRead(START_PIN) == HIGH) {
     currentTimerStart = millis() / 1000;
