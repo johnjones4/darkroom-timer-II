@@ -1,0 +1,482 @@
+<!doctype html>
+<head>
+  <title>Darkroom Timer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    :root {
+      --bg-color: black;
+      --ui-color: #ff0000;
+      --ui-inactive-color: #c35b5b;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: var(--bg-color);
+      color: var(--ui-color);
+    }
+    #main {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+    #frames {
+      flex-grow: 1;
+      padding: 1em;
+      overflow-y: scroll;
+    }
+    #frames .tab-frame {
+      display: none;
+    }
+    #frames .tab-frame.active {
+      display: block;
+    }
+    #tabbar {
+      height: 75px;
+      display: flex;
+      flex-direction: row;
+    }
+    #tabbar button {
+      flex-grow: 1;
+      border: none;
+      outline: none;
+      background-color: var(--ui-inactive-color);
+      color: var(--bg-color);
+    }
+    #tabbar button.active {
+      background-color: var(--ui-color);
+    }
+    .field-group {
+      margin: 0 0 1em 0;
+      flex-grow: 1;
+    }
+    .field-group label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .field-group-row {
+      display: flex;
+      flex-direction: row;
+      margin: 0 0 1em 0;
+    }
+    .field-group-row .field-group  {
+      margin: 0;
+    }
+    .field-group select, .field-group input {
+      display: block;
+      width: 100%;
+      font-size: 1.25em;
+      height: 2em;
+      background: none;
+      color: var(--ui-color);
+      border: solid 1px var(--ui-inactive-color);
+    }
+    .field-group input[type=checkbox] {
+      display: inline-block;
+      width: 1.5em;
+      margin-right: 0.5em;
+    }
+    .button {
+      border: none;
+      outline: none;
+      border-radius: 0.5em;
+      background-color: var(--ui-color);
+      color: var(--bg-color);
+      display: block;
+      margin: auto;
+      width: 100%;
+    }
+    .send-button, .save-button {
+      font-size: 1.5em;
+      padding: 1em 0;
+    }
+    .add-button, .recent-button {
+      padding: 0.5em 0;
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <div id="frames"></div>
+    <div id="tabbar"></div>
+  </div>
+  <script lang="javascript">
+    let recents = [];
+    let tree = [];
+    let path = [];
+    let settings = {};
+    const labels = [
+      {
+        "label": "Film",
+        "name": "film"
+      },
+      {
+        "label": "Developer",
+        "name": "developer"
+      },
+      {
+        "label": "Dilution",
+        "name": "dilution"
+      },
+      {
+        "label": "ISO",
+        "name": "iso"
+      },
+      {
+        "label": "Format",
+        "name": "format"
+      },
+      {
+        "label": "Temperature",
+        "name": "temperature"
+      },
+    ];
+
+    let customTimes = [{minutes: 0, seconds: 0}];
+
+    let selectorFrame = null;
+    let customFrame = null;
+    let recentFrame = null;
+    let settingsFrame = null;
+
+    const createTab = (label, id) => {
+      const isFirstTab = document.querySelectorAll('#frames .tab-frame').length === 0;
+
+      const frame = document.createElement('div')
+      frame.id = id;
+      frame.classList.add('tab-frame');
+      if (isFirstTab) {
+        frame.classList.add('active');
+      }
+      document.getElementById('frames').append(frame);
+
+      const tabButton = document.createElement('button');
+      tabButton.textContent = label;
+      tabButton.setAttribute('data-tab', id);
+      if (isFirstTab) {
+        tabButton.classList.add('active');
+      }
+      document.getElementById('tabbar').append(tabButton);
+
+      tabButton.addEventListener('click', (e) => {
+        document.querySelectorAll('#tabbar button').forEach(btn => {
+          if (btn.getAttribute('data-tab') === id) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+        document.querySelectorAll('#frames .tab-frame').forEach(frm => {
+          if (frm.id === id) {
+            frm.classList.add('active');
+          } else {
+            frm.classList.remove('active');
+          }
+        });
+      });
+
+      return frame;
+    }
+
+    const updateAllOptions = () => {
+      if (selectedFilmIndex >= 0) {
+        setOptions(developerSelector, choices[selectedFilmIndex].d)
+      }
+    }
+
+    const loadTree = async () => {
+      const res = await fetch('data.json');
+      tree = await res.json();
+    }
+
+    const setTimes = async (name, times) => {
+      await fetch('/set', {
+        body: JSON.stringify({
+          times,
+          name,
+        }),
+        headers: {
+          'Content-type': 'application/json',
+        },
+        method: 'post'
+      });
+      await loadRecents();
+      renderRecentTimes();
+    }
+
+    const loadRecents = async() => {
+      try {
+        const res = await fetch('/recent');
+        const r = await res.json();
+        if (r && r.times) {
+          recents = r.times.reverse();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    const renderSendButton = (name, getTimes) => {
+      const button = document.createElement('button');
+      button.classList.add('send-button');
+      button.classList.add('button');
+      button.textContent = `Set ${getTimes().map(t => formatTime(t)).join(', ')}`;
+      button.addEventListener('click', async () => {
+        await setTimes(name, getTimes());
+      })
+      return button
+    }
+
+    const renderTree = () => {
+      const nextLevel = (localTree, depth) => {
+        const name = 'selector-' + labels[depth].name;
+        const selector = document.createElement('select');
+        selector.name = name;
+        selector.id = name;
+        const option = document.createElement('option');
+        option.textContent = '';
+        selector.appendChild(option);
+        localTree.forEach(child => {
+          const option = document.createElement('option');
+          option.textContent = child.n;
+          selector.appendChild(option);
+        });
+        if (localTree.length === 1 && depth >= path.length) {
+          path.push(0);
+        }
+        selector.addEventListener('change', (e) => {
+          const index = e.target.selectedIndex - 1;
+          path = path.filter((_, i) => i < depth);
+          if (index >= 0) {
+            path.push(index);
+          }
+          renderTree();
+        });
+        const group = makeField(selector, labels[depth].label);
+        selectorFrame.appendChild(group);
+
+        if (depth < path.length) {
+          selector.selectedIndex = path[depth] + 1;
+          
+          if (depth + 1 < labels.length) {
+            nextLevel(localTree[path[depth]].c, depth + 1);
+          } else if (localTree[path[depth]].l) {
+            selectorFrame.appendChild(renderSendButton(generateSummaryFromCurrentTree(), () => localTree[path[depth]].l));
+          }
+        }
+      }
+      selectorFrame.innerHTML = '';
+      nextLevel(tree, 0);
+    }
+
+    const formatTime = (totalSeconds) => {
+      let minutes = Math.floor(totalSeconds / 60);
+      let seconds = totalSeconds - (minutes * 60);
+      if (minutes < 10) {
+        minutes = '0'+minutes;
+      }
+      if (seconds < 10) {
+        seconds = '0'+seconds;
+      }
+      return minutes+':'+seconds;
+    }
+
+    const makeField = (fieldElemment, label, wrapLabel = false) => {
+      const group = document.createElement('div');
+      group.classList.add('field-group');
+
+      const labelElement = document.createElement('label');
+      labelElement.htmlFor = fieldElemment.id;
+      if (!wrapLabel) {
+        labelElement.textContent = label;
+      }
+      group.appendChild(labelElement);
+
+      if (wrapLabel) {
+        labelElement.appendChild(fieldElemment);
+        labelElement.appendChild(document.createTextNode(' ' + label));
+      } else {
+        group.append(fieldElemment);
+      }
+
+      return group;
+    }
+
+    const makeInputField = (label, type, id, value, onChange) => {
+      const field = document.createElement('input');
+      field.type = type;
+      field.id = id;
+      field.name = id;
+      if (type === 'checkbox') {
+        field.checked = value;
+      } else {
+        field.value = value;
+      }
+      field.addEventListener('change', (e) => onChange(e.target.value, e.target));
+      return makeField(field, label, type === 'checkbox');
+    }
+
+    const min = (a, b) => {
+      return a < b ? a : b;
+    }
+
+    const renderCustomTimes = () => {
+      let sendButton = null;
+      const renderCustomTimesSendButton = () => {
+        const button = renderSendButton('Custom', () => customTimes.map(({minutes, seconds}) => seconds + (minutes * 60)));
+        if (sendButton) {
+          sendButton.replaceWith(button);
+        } else {
+          customFrame.appendChild(button);
+        }
+        sendButton = button;
+      }
+      customFrame.innerHTML = '';
+      customTimes.forEach(({minutes, seconds}, i) => {
+        const row = document.createElement('div');
+        row.classList.add('field-group-row');
+
+        row.appendChild(makeInputField('Minutes', 'number', `minutes-${i}`, minutes, (val, el) => {
+          customTimes[i].minutes = min(60, parseInt(val));
+          el.value = customTimes[i].minutes;
+          renderCustomTimesSendButton();
+        }));
+
+        row.appendChild(makeInputField('Seconds', 'number', `seconds-${i}`, seconds, (val, el) => {
+          customTimes[i].seconds = min(60, parseInt(val));
+          el.value = customTimes[i].seconds;
+          renderCustomTimesSendButton();
+        }));
+
+        customFrame.appendChild(row);
+      });
+
+      const button = document.createElement('button');
+      button.classList.add('add-button')
+      button.classList.add('button');
+      button.textContent = 'Add Time';
+      button.addEventListener('click', () => {
+        customTimes.push({minutes: 0, seconds: 0});
+        renderCustomTimes();
+      })
+      customFrame.appendChild(button);
+      renderCustomTimesSendButton();
+    }
+
+    const renderRecentTimes = () => {
+      recentFrame.innerHTML = '';
+      recents.forEach(({name, times}) => {
+        const button = document.createElement('button');
+        button.classList.add('recent-button')
+        button.classList.add('button');
+        button.textContent = `${name}: ${times.map(t => formatTime(t)).join(', ')}`;
+        button.addEventListener('click', () => {
+          setTimes(name, times);
+        })
+        recentFrame.appendChild(button);
+      });
+    }
+
+    const generateSummaryFromCurrentTree = () => {
+      let localTree = tree;
+      return path.map(index => {
+        const val = localTree[index].n;
+        if (localTree[index].c) {
+          localTree = localTree[index].c;
+        }
+        return `${val}`;
+      }).join('/');
+    }
+
+    const loadSettings = async () => {
+      try {
+        const res = await fetch('/preferences');
+        const r = await res.json();
+        if (r) {
+          settings = r;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    const saveSettings = async () => {
+      const res = await fetch('/preferences', {
+        body: JSON.stringify(settings),
+        headers: {
+          'Content-type': 'application/json',
+        },
+        method: 'post'
+      });
+      const r = await res.json();
+      if (r) {
+        settings = r;
+        renderSettings();
+      }
+    }
+
+    const renderSettings = async () => {
+      settingsFrame.innerHTML = '';
+      settingsFrame.appendChild(makeInputField('Brightness', 'number', 'brightness', settings.brightness, (val, el) => {
+        settings.brightness = parseInt(val);
+      }));
+
+      const joinWifi = settings.wifiSSID !== '';
+
+      const wifiSSIDField = makeInputField('Wifi SSID', 'string', 'wifiSSID', settings.wifiSSID, (val, el) => {
+        settings.wifiSSID = val;
+      });
+      wifiSSIDField.style.display = joinWifi ? 'block' : 'none';
+
+      const wifiPasswordField = makeInputField('Wifi Password', 'string', 'wifiPassword', settings.wifiPassword, (val, el) => {
+        settings.wifiPassword = val;
+      });
+      wifiPasswordField.style.display = joinWifi ? 'block' : 'none';
+
+      const wifiModeCheckbox = makeInputField('Join Wifi Network', 'checkbox', 'wifimode', joinWifi, (val, el) => {
+        wifiSSIDField.style.display = el.checked ? 'block' : 'none';
+        wifiPasswordField.style.display = el.checked ? 'block' : 'none';
+        settings.wifiSSID = '';
+        settings.wifiPassword = '';
+      });
+
+      settingsFrame.appendChild(wifiModeCheckbox);
+      settingsFrame.appendChild(wifiSSIDField);
+      settingsFrame.appendChild(wifiPasswordField);
+
+      const button = document.createElement('button');
+      button.classList.add('save-button')
+      button.classList.add('button');
+      button.textContent = 'Save';
+      button.addEventListener('click', async () => {
+        await saveSettings();
+      })
+      settingsFrame.appendChild(button);
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      selectorFrame = createTab('Selector', 'selector');
+      customFrame = createTab('Custom', 'custom');
+      recentFrame = createTab('Recent', 'recent');
+      settingsFrame = createTab('Settings', 'settings');
+
+      await loadTree();
+      await loadRecents();
+      await loadSettings();
+      renderTree();
+      renderCustomTimes();
+      renderRecentTimes();
+      renderSettings();
+    });
+  </script>
+</body>
+</html>
